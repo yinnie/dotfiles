@@ -1,3 +1,4 @@
 yin's dotfiles
 
-building my dotfiles little by little
+mostly forked from http://github.com/mathiasbynens/dotfiles
+excluding things that I don't need from him
