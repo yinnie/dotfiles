@@ -6,7 +6,7 @@ done
 unset file
 
 #init z http://github.com/rupa/z
-. ~/code/z/z.sh
+#. ~/code/z/z.sh
 
 # cloujure
 CLOUJURESCRIPT_HOME=~/.documents/clojure/clojurescript
