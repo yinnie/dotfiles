@@ -6,12 +6,6 @@ set background=dark
 syntax on
 colorscheme solarized 
 
-" Enabled later, after Pathogen
-filetype off
-
-" Change mapleader
-let mapleader="."
-
 " Local dirs
 set backupdir=~/.vim/backups
 set directory=~/.vim/tmp
@@ -88,13 +82,6 @@ set wildmode=list:longest " Complete only until point of ambiguity.
 set winminheight=0 "Allow splits to be reduced to a single line.
 set wrapscan " Searches wrap around end of file
 
-" Speed up viewport scrolling
-" nnoremap <C-e> 3<C-e>
-" nnoremap <C-y> 3<C-y>
-
-" Remap :W to :w
-command W w
-
 
 " Hard to type things
 map 0 ^
@@ -107,6 +94,7 @@ imap jj <Esc>
 
 " pathogen
 execute pathogen#infect()
+filetype plugin indent on
 
 " runtime path
 set runtimepath+=$HOME/.vim/vim-clojure-static
@@ -119,64 +107,4 @@ let g:syntastic_mode_map = { 'mode' : 'active',
         \ 'passive_filetypes': ['html'] }
 let g:syntastic_javascript_checkers = ['jshint']
 
-" Toggle show tabs and trailing spaces (,c)
-set lcs=tab:›\ ,trail:·,eol:¬,nbsp:_
-set fcs=fold:-
-nnoremap <silent> <leader>c :set nolist!<CR>
-
-" Clear last search (,qs)
-map <silent> <leader>qs <Esc>:noh<CR>
-" map <silent> <leader>qs <Esc>:let @/ = ""<CR>
-
-" Remap keys for auto-completion, disable arrow keys
-" I still need these cuz im nub. so nub.
-" inoremap <expr>  <Esc>      pumvisible() ? "\<C-e>" : "\<Esc>"
-" inoremap <expr>  <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
-" inoremap <expr>  <Down>     pumvisible() ? "\<C-n>" : "\<NOP>"
-" inoremap <expr>  <Up>       pumvisible() ? "\<C-p>" : "\<NOP>"
-" inoremap <Left>  <NOP>
-" inoremap <Right> <NOP>
-
-" Indent/unident block (,]) (,[)
-nnoremap <leader>] >i{<CR>
-nnoremap <leader>[ <i{<CR>
-
-" Paste toggle (,p)
-set pastetoggle=<leader>p
-map <leader>p :set invpaste paste?<CR>
-
-" Buffer navigation (,,) (,]) (,[) (,ls)
-map <Leader>, <C-^>
-" :map <Leader>] :bnext<CR>
-" :map <Leader>[ :bprev<CR>
-map <Leader>ls :buffers<CR>
-
-" Close Quickfix window (,qq)
-map <leader>qq :cclose<CR>
-
-" Yank from cursor to end of line
-nnoremap Y y$
-
-" Insert newline
-map <leader><Enter> o<ESC>
-
-" Search and replace word under cursor (,*)
-nnoremap <leader>* :%s/\<<C-r><C-w>\>//<Left>
-
-" Strip trailing whitespace (,ss)
-function! StripWhitespace ()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
-    :%s/\s\+$//e
-    call setpos('.', save_cursor)
-    call setreg('/', old_query)
-endfunction
-noremap <leader>ss :call StripWhitespace ()<CR>
-
-
-
-" Clojure.vim
-let g:vimclojure#ParenRainbow = 1 " Enable rainbow parens
-let g:vimclojure#DynamicHighlighting = 1 " Dynamic highlighting
-let g:vimclojure#FuzzyIndent = 1 " Names beginning in 'def' or 'with' to be indented as if they were included in the 'lispwords' option
 
