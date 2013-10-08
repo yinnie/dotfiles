@@ -14,7 +14,7 @@ let mapleader="."
 
 " Local dirs
 set backupdir=~/.vim/backups
-set directory=~/.vim/swaps
+set directory=~/.vim/tmp
 set undodir=~/.vim/undo
 
 " Set some junk
